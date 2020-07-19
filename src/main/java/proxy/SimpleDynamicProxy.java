@@ -19,9 +19,9 @@ public class SimpleDynamicProxy {
         RealObject real = new RealObject();
         consumer(real);
 
-//        Interaface1 proxy = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
-//                new Class[]{Interaface1.class}, new DynamicProxyHandler(real));
-//        consumer(proxy);
+       Interaface1 proxy = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
+               new Class[]{Interaface1.class}, new DynamicProxyHandler(real));
+       consumer(proxy);
 
         Interaface1 proxy2 = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
                 new Class[]{Interaface1.class}, new MethodSelector(real));
