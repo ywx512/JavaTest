@@ -68,5 +68,4 @@ public class SyncBuyer implements OrderResult {
 	public String getOrderResult(String state) {
 		return "store: " + this.getStore().getName() + ", goodsName: " + this.getGoodsName() + ", state: " + state;
 	}
-
 }

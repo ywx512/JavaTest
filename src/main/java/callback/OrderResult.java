@@ -12,5 +12,5 @@ public interface OrderResult {
 	 * @param state
 	 * @return
 	 */
-	public String getOrderResult(String state);
+	String getOrderResult(String state);
 }

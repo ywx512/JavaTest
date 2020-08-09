@@ -1,5 +1,7 @@
 package reflections;
 
+import reflections.annotation.Action;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -15,6 +17,8 @@ import java.util.jar.JarFile;
  * @Description:
  */
 public class ClassUtil {
+
+    private static volatile ClassUtil instance;
 
     /**
      * 获得包下面的所有的class
@@ -75,9 +79,9 @@ public class ClassUtil {
         File[] dirFiles = dir.listFiles(new FileFilter() {
 
             @Override
-            public boolean accept(File file) {
-                boolean acceptDir = recursive && file.isDirectory();// 接受dir目录
-                boolean acceptClass = file.getName().endsWith("class");// 接受class文件
+            public boolean accept(File pathname) {
+                boolean acceptDir = recursive && pathname.isDirectory();// 接受dir目录
+                boolean acceptClass = pathname.getName().endsWith("class");// 接受class文件
                 return acceptDir || acceptClass;
             }
         });
@@ -173,12 +177,28 @@ public class ClassUtil {
         }
     }
 
+    public static ClassUtil getInstance() {
+        if (instance == null) {
+            synchronized (ClassUtil.class) {
+                if (instance == null) {
+                    return new ClassUtil();
+                }
+            }
+        }
+        return instance;
+    }
+
     public static void main(String[] args) {
-        ClassUtil classUtil = new ClassUtil();
-        List<Class> clazzs = classUtil.getClasssFromPackage("reflections");//
+        List<Class> clazzs = ClassUtil.getInstance().getClasssFromPackage("reflections");
 //        List<Class> clazzs = classUtil.getClasssFromPackage("包名");
+//        for (Class clazz : clazzs) {
+//            System.out.println(clazz.getName());
+//        }
+
         for (Class clazz : clazzs) {
-            System.out.println(clazz.getName());
+            if (clazz.isAnnotationPresent(Action.class)) {
+                System.out.println(clazz.getName());
+            }
         }
 
         System.out.println("test");

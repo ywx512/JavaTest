@@ -12,8 +12,8 @@ public class TestCallback {
 		SyncBuyer syncBuyer = new SyncBuyer(store, "buyerName_1", "goodsName_1");
 		System.out.println(syncBuyer.orderGoods());
 
-		Store store2 = new Store("store_2");
-		NoSyncBuyer noSyncBuyer = new NoSyncBuyer(store2, "buyerName_1", "goodsName_1");
-		System.out.println(noSyncBuyer.orderGoods());
+//		Store store2 = new Store("store_2");
+//		NoSyncBuyer noSyncBuyer = new NoSyncBuyer(store2, "buyerName_1", "goodsName_1");
+//		System.out.println(noSyncBuyer.orderGoods());
 	}
 }
