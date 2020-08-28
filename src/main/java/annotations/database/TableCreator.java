@@ -38,7 +38,7 @@ public class TableCreator {
                     continue;
                 }
 
-                for(int i = 0; i < annotations.length; i++){
+                for (int i = 0; i < annotations.length; i++) {
 
                     if (annotations[0] instanceof SQLString) {
                         SQLString sqlString = (SQLString) annotations[0];

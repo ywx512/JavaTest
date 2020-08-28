@@ -41,13 +41,13 @@ public class Demo {
         System.out.println("======================================");
 
         Constructor[] constructors = clazz.getConstructors();
-        for(Constructor constructor : constructors){
+        for (Constructor constructor : constructors) {
             System.out.println(constructor.toString());
         }
 
         System.out.println("======================================");
         Constructor[] constructors1 = clazz.getDeclaredConstructors();
-        for(Constructor constructor : constructors1){
+        for (Constructor constructor : constructors1) {
             System.out.println(constructor.toString());
         }
     }

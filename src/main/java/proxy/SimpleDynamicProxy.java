@@ -19,9 +19,9 @@ public class SimpleDynamicProxy {
         RealObject real = new RealObject();
         consumer(real);
 
-       Interaface1 proxy = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
-               new Class[]{Interaface1.class}, new DynamicProxyHandler(real));
-       consumer(proxy);
+        Interaface1 proxy = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
+                new Class[]{Interaface1.class}, new DynamicProxyHandler(real));
+        consumer(proxy);
 
         Interaface1 proxy2 = (Interaface1) Proxy.newProxyInstance(Interaface1.class.getClassLoader(),
                 new Class[]{Interaface1.class}, new MethodSelector(real));
@@ -50,7 +50,7 @@ class DynamicProxyHandler implements InvocationHandler {
     }
 }
 
-class MethodSelector implements InvocationHandler{
+class MethodSelector implements InvocationHandler {
     private Object proxied;
 
     public MethodSelector(Object proxied) {
@@ -61,7 +61,7 @@ class MethodSelector implements InvocationHandler{
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("****** proxy: " + proxy.getClass() + ", method: " + method + ", args: " + args);
 
-        if(method.getName().equals("somethingElse")){
+        if (method.getName().equals("somethingElse")) {
             System.out.println("Proxy detected the somethingElse");
         }
         return method.invoke(proxied, args);

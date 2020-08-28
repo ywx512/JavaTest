@@ -13,7 +13,7 @@ public class Position {
     public Position(String title, Person person) {
         this.title = title;
         this.person = person;
-        if(person == null){
+        if (person == null) {
             person = Person.NULL;
         }
     }
@@ -38,7 +38,7 @@ public class Position {
     public void setPerson(Person person) {
         this.person = person;
         if (person == null) {
-              person = Person.NULL;
+            person = Person.NULL;
         }
     }
 

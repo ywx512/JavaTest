@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
  */
 public class DemoTest {
 
-	@Test
-	void test() {
-		Demo demo = new Demo();
-		demo.test();
-	}
+    @Test
+    void test() {
+        Demo demo = new Demo();
+        demo.test();
+    }
 }

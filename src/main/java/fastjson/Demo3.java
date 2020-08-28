@@ -4,9 +4,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 /*
-* @author yuweixiong
-* @date 2020/03/27
-*/
+ * @author yuweixiong
+ * @date 2020/03/27
+ */
 public class Demo3 {
 
     public static void main(String[] args) {

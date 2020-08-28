@@ -21,7 +21,7 @@ public class SimpleCallable implements Callable<String> {
     }
 }
 
-class CallableDemo{
+class CallableDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         ArrayList<Future<String>> results = new ArrayList<>();
@@ -29,14 +29,14 @@ class CallableDemo{
             results.add(executorService.submit(new SimpleCallable(i)));
         }
 
-        for(Future<String > future : results){
+        for (Future<String> future : results) {
             try {
                 System.out.println(future.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 executorService.shutdown();
             }
         }

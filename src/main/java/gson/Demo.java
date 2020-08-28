@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package gson;
 
@@ -14,10 +14,10 @@ import entity.Car;
 import entity.Recipe;
 import entity.User;
 
-/**  
-* @author ywx
-* @Date 2020年1月11日 下午2:55:01
-*/
+/**
+ * @author ywx
+ * @Date 2020年1月11日 下午2:55:01
+ */
 
 /**
  * @ClassName: Demo1

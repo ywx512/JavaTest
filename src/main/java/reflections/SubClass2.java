@@ -8,5 +8,5 @@ import reflections.annotation.Action;
  * @Description:
  */
 @Action
-public class SubClass2 extends SuperClass{
+public class SubClass2 extends SuperClass {
 }

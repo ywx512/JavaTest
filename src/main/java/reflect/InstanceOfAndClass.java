@@ -1,7 +1,7 @@
 package reflect;
 
 public class InstanceOfAndClass {
-    static void test(Object object){
+    static void test(Object object) {
         System.out.println("Test type: " + object);
         System.out.println("obj instanceof Base: " + (object instanceof InstanceBase));
         System.out.println("obj instanceof Down: " + (object instanceof InstanceDown));
@@ -19,5 +19,8 @@ public class InstanceOfAndClass {
     }
 }
 
-class InstanceBase {}
-class InstanceDown extends InstanceBase {}
+class InstanceBase {
+}
+
+class InstanceDown extends InstanceBase {
+}

@@ -7,10 +7,10 @@ package callback;
  */
 public interface OrderResult {
 
-	/**
-	 * @Description:订购货物的状态
-	 * @param state
-	 * @return
-	 */
-	String getOrderResult(String state);
+    /**
+     * @param state
+     * @return
+     * @Description:订购货物的状态
+     */
+    String getOrderResult(String state);
 }

@@ -6,11 +6,11 @@ package reflect;
  * @Description:
  */
 public class Demo4 {
-	public static void main(String[] args) {
-		Class intClazz = int.class;
-		Class<? extends Number> intClazz2 = int.class;
-		System.out.println(intClazz2 == int.class);
-		intClazz2 = double.class;
-		System.out.println(intClazz2 == double.class);
-	}
+    public static void main(String[] args) {
+        Class intClazz = int.class;
+        Class<? extends Number> intClazz2 = int.class;
+        System.out.println(intClazz2 == int.class);
+        intClazz2 = double.class;
+        System.out.println(intClazz2 == double.class);
+    }
 }

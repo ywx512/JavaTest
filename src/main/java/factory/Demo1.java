@@ -15,7 +15,8 @@ public class Demo1 {
     }
 
     private static Random random = new Random(40);
-    public static Demo1 createRandom(){
+
+    public static Demo1 createRandom() {
         int n = random.nextInt(partFactories.size());
         return partFactories.get(n).create();
     }
