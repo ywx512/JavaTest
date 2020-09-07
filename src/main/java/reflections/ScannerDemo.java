@@ -27,10 +27,12 @@ public class ScannerDemo {
             File file = new File(scanFile, filename);
             if (file.isDirectory()) {
                 scanPackages(packageName + "." + filename);
-            } else {
-                if (filename.indexOf(".class") > 0)
-                    clzList.add(packageName + "." + filename.replace(".class", ""));
             }
+//            else {
+//                if (filename.indexOf(".class") > 0) {
+//                    clzList.add(packageName + "." + filename.replace(".class", ""));
+//                }
+//            }
         }
 
         return clzList;

@@ -177,23 +177,8 @@ public class ClassUtil {
         }
     }
 
-    public static ClassUtil getInstance() {
-        if (instance == null) {
-            synchronized (ClassUtil.class) {
-                if (instance == null) {
-                    return new ClassUtil();
-                }
-            }
-        }
-        return instance;
-    }
-
     public static void main(String[] args) {
-        List<Class> clazzs = ClassUtil.getInstance().getClasssFromPackage("reflections");
-//        List<Class> clazzs = classUtil.getClasssFromPackage("包名");
-//        for (Class clazz : clazzs) {
-//            System.out.println(clazz.getName());
-//        }
+        List<Class> clazzs = ClassUtil.getClasssFromPackage("reflections");
 
         for (Class clazz : clazzs) {
             if (clazz.isAnnotationPresent(Action.class)) {
@@ -201,7 +186,6 @@ public class ClassUtil {
             }
         }
 
-        System.out.println("test");
 
 //        clazzs = classUtil.getClasssFromJarFile("Jar文件的路径", "Jar文件里面的包路径");
 //        for (Class clazz : clazzs) {
