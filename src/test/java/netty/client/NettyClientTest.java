@@ -6,5 +6,7 @@ package netty.client;
  * @description
  */
 public class NettyClientTest {
+    public static void main(String[] args){
 
+    }
 }

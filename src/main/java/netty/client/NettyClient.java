@@ -9,6 +9,9 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 
 /**
@@ -23,13 +26,17 @@ public class NettyClient {
 
     private final int port;
 
+    private EventLoopGroup group = new NioEventLoopGroup();
+
+    private ChannelFuture channelFuture;
+
     public NettyClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
     public void start() {
-        EventLoopGroup group = new NioEventLoopGroup();
+//        EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap()
                 .group(group)
                 .channel(NioSocketChannel.class)
@@ -39,24 +46,20 @@ public class NettyClient {
                 .handler(new NettyClientInitializer());
 
         try {
-            ChannelFuture future = bootstrap.connect().sync();
+            channelFuture = bootstrap.connect().sync();
             log.info("客户端成功....");
-            //发送消息
-            future.channel().writeAndFlush("你好啊");
-            // 等待连接被关闭
-            future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            group.shutdownGracefully();
+            log.error("中断异常", e);
         }
     }
 
-    public String getHost() {
-        return host;
+    public void send(String msg) {
+        log.info("send: " + msg);
+        channelFuture.channel().writeAndFlush(msg);
     }
 
-    public int getPort() {
-        return port;
+    public void close() {
+        log.info("close");
+        group.shutdownGracefully();
     }
 }
