@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -29,6 +30,16 @@ public class Demo {
     public static ObjectMapper objectMapper = new ObjectMapper();
 
     public static void main(String[] args) throws JsonProcessingException {
+        String json = "{ \"f1\" : \"v1\" } ";
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        JsonNode jsonNode = objectMapper.readTree(json);
+
+        System.out.println(jsonNode.get("f1").asText());
+    }
+
+    public static void main2(String[] args) throws JsonProcessingException {
         SimpleUser simpleUser = SimpleUser.builder().withId(1).withName("simpleUser").build();
 
         /**
