@@ -10,7 +10,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * @Date 2020年3月11日 下午10:53:21
  */
 
-public class SimpleUser {
+public class SimpleUser implements Cloneable{
 
     private String name;
 
@@ -52,6 +52,11 @@ public class SimpleUser {
      */
     public SimpleUser() {
         super();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     @Override
