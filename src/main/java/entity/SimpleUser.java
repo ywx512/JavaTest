@@ -3,6 +3,8 @@
  */
 package entity;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 /**
  * @author ywx
  * @Date 2020年3月11日 下午10:53:21
