@@ -17,6 +17,11 @@ public class Demo2 {
         JsonNode jsonNode1 = objectMapper.readTree(jsonStr1);
         ObjectNode objectNode1 = objectMapper.createObjectNode();
         objectNode1.setAll((ObjectNode) jsonNode1);
+        objectNode1.put("aa","aa");
         System.out.println(objectNode1.toString());
+
+        ObjectNode objectNode = objectMapper.readValue(jsonStr1, ObjectNode.class);
+
+        System.out.println(objectNode.toString());
     }
 }

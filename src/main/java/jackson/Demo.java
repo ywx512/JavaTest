@@ -3,6 +3,7 @@
  */
 package jackson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,7 +30,7 @@ public class Demo {
 
     public static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main2(String[] args) throws JsonProcessingException {
         String json = "{ \"f1\" : \"v1\" } ";
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -37,9 +38,11 @@ public class Demo {
         JsonNode jsonNode = objectMapper.readTree(json);
 
         System.out.println(jsonNode.get("f1").asText());
+
+
     }
 
-    public static void main2(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws IOException {
         SimpleUser simpleUser = SimpleUser.builder().withId(1).withName("simpleUser").build();
 
         /**
@@ -59,6 +62,12 @@ public class Demo {
          * jackson中json对象就是一个个node
          */
         ObjectNode objectNode = objectMapper.readValue(simpleUserJsonStr, ObjectNode.class);
+
+        SimpleUser simpleUser66 = objectMapper.reader().readValue(objectNode, SimpleUser.class);
+        Object object66 = objectMapper.readerFor(SimpleUser.class).readValue(objectNode);
+
+        System.out.println("object66:" + object66);
+        System.out.println("simpleUser66:" + simpleUser66);
 
         /**
          * 查找node和值得几种方式区别 <br>
