@@ -1,17 +1,14 @@
 package jackson;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author yuweixiong
@@ -55,8 +52,9 @@ public class Demo3 {
         /**
          * java对象转json对象
          */
-//        ObjectNode nodes2 = objectMapper.readValue(userStr2)
+        ObjectNode nodes2 = objectMapper.readValue(objectMapper.writeValueAsString(user2), ObjectNode.class);
 
+        System.out.println("java --> jsonObj: " + nodes2.toString());
 
         /**
          * java对象转json字符串
@@ -64,6 +62,19 @@ public class Demo3 {
         String userStr3 = objectMapper.writeValueAsString(user2);
 
         System.out.println("java --> jsonStr: " + userStr3);
+
+        ArrayList<User> array1 = new ArrayList<>();
+        array1.add(user1);
+        array1.add(user2);
+        array1.add(user1);
+
+        String array1JsonStr = objectMapper.writeValueAsString(array1);
+
+        System.out.println("array1JsonStr : " + array1JsonStr);
+
+        ArrayNode arrayNode1 = objectMapper.readValue(array1JsonStr, ArrayNode.class);
+
+        System.out.println("arrayNode1 : " + arrayNode1.toString());
     }
 }
 

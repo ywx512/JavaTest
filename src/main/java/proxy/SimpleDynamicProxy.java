@@ -64,6 +64,12 @@ class MethodSelector implements InvocationHandler {
         if (method.getName().equals("somethingElse")) {
             System.out.println("Proxy detected the somethingElse");
         }
+
+        if (method.getName().equals("somethingElse")) {
+            System.out.println("args: " + args[0]);
+            System.out.println("Proxy detected the somethingElse");
+        }
+
         return method.invoke(proxied, args);
     }
 }
