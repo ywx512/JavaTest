@@ -26,9 +26,10 @@ public class Demo {
 
     public static void main(String[] args) throws IOException {
 //		baseTest();
+//        ChannelCopy();
 //		TransferToDemo();
-//		BufferToText();
-        UTF8Demo();
+		BufferToText();
+//        UTF8Demo();
     }
 
     @SuppressWarnings("resource")
