@@ -1,4 +1,4 @@
-package proxy;
+package decorator_pattern.proxy;
 
 /**
  * @author: yuweixiong

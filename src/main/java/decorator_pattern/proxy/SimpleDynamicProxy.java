@@ -1,4 +1,4 @@
-package proxy;
+package decorator_pattern.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -38,7 +38,7 @@ class DynamicProxyHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("****** proxy: " + proxy.getClass() + ", method: " + method + ", args: " + args);
+        System.out.println("****** decorator_pattern.proxy: " + proxy.getClass() + ", method: " + method + ", args: " + args);
 
         if (args != null) {
             for (Object arg : args) {
@@ -59,7 +59,7 @@ class MethodSelector implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("****** proxy: " + proxy.getClass() + ", method: " + method + ", args: " + args);
+        System.out.println("****** decorator_pattern.proxy: " + proxy.getClass() + ", method: " + method + ", args: " + args);
 
         if (method.getName().equals("somethingElse")) {
             System.out.println("Proxy detected the somethingElse");
