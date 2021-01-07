@@ -1,5 +1,6 @@
 package jackson;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -34,6 +35,10 @@ public class Demo3 {
         User user1 = objectMapper.readValue(userStr1, User.class);
 
         System.out.println("jsonStr --> java: " + user1);
+
+        User user11 = objectMapper.readValue(userStr1, new TypeReference<User>() {});
+
+        System.out.println("jsonStr ---> java 11: " + user11);
 
         /**
          * json对象转json字符串
@@ -75,6 +80,8 @@ public class Demo3 {
         ArrayNode arrayNode1 = objectMapper.readValue(array1JsonStr, ArrayNode.class);
 
         System.out.println("arrayNode1 : " + arrayNode1.toString());
+
+
     }
 }
 
