@@ -3,12 +3,14 @@ package jackson;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -88,6 +90,18 @@ public class JsonUtil {
         }
     }
 
+    public static <T> T toObject(String json, TypeReference<T> valueTypeRef) {
+        if (json == null) {
+            return null;
+        }
+
+        try {
+            return objectMapper.readValue(json, valueTypeRef);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * 对象转json字符串，如果对象为null，返回null
      *
@@ -112,8 +126,8 @@ public class JsonUtil {
         }
 
         try {
-            return objectMapper.readerFor(clazz).readValue(objectNode);
-        } catch (IOException e) {
+            return objectMapper.treeToValue(objectNode, clazz);
+        } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
@@ -129,11 +143,7 @@ public class JsonUtil {
             return objectMapper.createObjectNode();
         }
 
-        try {
-            return objectMapper.readValue(objectMapper.writeValueAsString(o), ObjectNode.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return objectMapper.valueToTree(o);
     }
 
     /**

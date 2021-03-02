@@ -1,6 +1,9 @@
 package jackson;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
  * @description
  */
 public class Demo3 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
 
         String userStr1 = "{ \"name\" : \"aa\", \"age\":11 } ";
@@ -50,14 +53,17 @@ public class Demo3 {
         /**
          * json对象转java对象
          */
-        User user2 = objectMapper.readerFor(User.class).readValue(nodes1);
+        User user2 = objectMapper.treeToValue(nodes1, User.class);
+
+        Object obj = objectMapper.treeToValue(nodes1, Object.class);
 
         System.out.println("jsonObj --> java: " + user2);
+        System.out.println("jsonObj --> java obj: " + obj);
 
         /**
          * java对象转json对象
          */
-        ObjectNode nodes2 = objectMapper.readValue(objectMapper.writeValueAsString(user2), ObjectNode.class);
+        ObjectNode nodes2 = objectMapper.valueToTree(user2);
 
         System.out.println("java --> jsonObj: " + nodes2.toString());
 
@@ -81,7 +87,7 @@ public class Demo3 {
 
         System.out.println("arrayNode1 : " + arrayNode1.toString());
 
-
+        System.out.println(arrayNode1.get(2));
     }
 }
 

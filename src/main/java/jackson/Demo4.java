@@ -20,5 +20,21 @@ public class Demo4 {
 
         Long id = list.get(0);
         System.out.println(id);
+
+        test1();
+    }
+
+    /**
+     * 泛型擦除问题
+     * @throws JsonProcessingException
+     */
+    static void test1() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        System.out.println("----------读集合类型------泛型擦除问题----");
+        List<Long> list = objectMapper.readValue("[1,2,3]", List.class);
+
+        Long id = list.get(0);
+        System.out.println(id);
     }
 }
